@@ -1,0 +1,1 @@
+The initial plan included a front-end and back-end with API, hence the dir structure.
