@@ -1,0 +1,8 @@
+[tool.isort]
+line_length = 120
+skip = ["venv/"]
+
+[tool.black]
+line-length = 120
+target-version = ['py311']  # Set this to your desired target Python version
+exclude = '/venv'
