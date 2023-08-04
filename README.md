@@ -55,8 +55,8 @@ def some_function(x: str, y: int) -> str:
     This text should be a brief description of the function, and what it does and possibly why it does it.
 
     Args:
-        x (str): This is the first argument, and should be a string and this text explains what it is.
-        y (int): This is the second argument, and should be an integer and this text explains what it is.
+        x: This is the first argument, and should be a string and this text explains what it is.
+        y: This is the second argument, and should be an integer and this text explains what it is.
 
     Returns:
         str: This is the return value, and should be a string and this text explains what it is.
