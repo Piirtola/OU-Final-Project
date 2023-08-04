@@ -54,7 +54,7 @@ def some_function(x: str, y: int) -> str:
     """
     This text should be a brief description of the function, and what it does and possibly why it does it.
 
-    Args:
+    Params:
         x: This is the first argument, and should be a string and this text explains what it is.
         y: This is the second argument, and should be an integer and this text explains what it is.
 
@@ -73,6 +73,15 @@ class SomeClass:
     def __init__(self, attr1: int, attr2: str):
         """
         This text should be a brief description of the init method if needed
+        
+        Params:
+            ...
+            
+        Attributes:
+            ...
+            
+        Class Attributes:
+            ...
         """
         ...
         
@@ -87,3 +96,32 @@ class SomeClass:
         Similar as above, however, should note why the function is a private method if this is the case.
         """
         ...
+
+# e.g.,
+
+class RDBConnectionWrapper:
+    """
+    Wrapper class for managing connections to a relational database (RDB) using connection pooling.
+
+    This class leverages psycopg2's `ThreadedConnectionPool` to maintain a pool of connections to the database,
+    optimizing resource utilization and performance. The connection pool's size can be controlled by adjusting
+    the `minconn` and `maxconn` parameters.
+
+    The context management protocol is implemented, allowing the use of the `with` statement to manage
+    connections, ensuring proper acquisition and release of connections from the pool.
+
+    x = RDBConnectionWrapper(config)
+     -> Initializes the connection pool with the provided configuration parameters.
+
+    Params:
+        config (DBConfig): An instance of DBConfig containing the necessary configuration parameters
+            for connecting to the database, including database name, user, password, host, and port.
+
+    Attributes:
+        pool (ThreadedConnectionPool): The connection pool for managing connections to the database.
+        conn (Optional[psycopg2.extensions.connection]): The current active connection, if any.
+        
+    Class Attributes:
+        ...
+        
+    """

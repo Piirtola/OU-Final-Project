@@ -1,0 +1,14 @@
+XPATHS:
+  LOGIN_USERNAME: "/html/body/div[1]/div/div[1]/div/main/div[2]/div[3]/div/div/form/div[1]/div[2]/input"
+  LOGIN_PASSWORD: "/html/body/div[1]/div/div[1]/div/main/div[2]/div[3]/div/div/form/div[2]/div[2]/input"
+  LOGIN_SUBMIT: "/html/body/div[1]/div/div[1]/div/main/div[2]/div[3]/div/div/form/div[4]/span/input"
+  REJECT_COOKIES: "/html/body/div[2]/div[2]/div/div[1]/div/div[2]/div/button[2]"
+  LOGGED_IN_PROFILE: "/html/body/div[1]/div/header/div[2]/div[4]/div/div[2]/p"
+  LOGIN_BUTTON: "/html/body/div[1]/div/header/div[2]/div[5]/div[1]"
+  METADATA_TABLE_DIV: "/html/body/div[1]/div/div[1]/div/main/div[2]/div[4]/div[4]/div[1]"
+  MATCH_HTML: "/html/body/div[1]/div/div[1]/div"
+
+URLS:
+  BASE: "https://www.oddsportal.com"
+  LOGIN: "https://www.oddsportal.com/login/"
+  MATCHES: "https://www.oddsportal.com/matches/{sport}/"
