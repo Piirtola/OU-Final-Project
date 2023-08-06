@@ -32,6 +32,17 @@ class TestRDBConnectionWrapper(unittest.TestCase):
         # Check that the connection was released
         self.assertIsNone(wrapper.conn)
 
+    def test_connection_error_an_release(self):
+        """
+        Test that an error is raised when the connection fails, .
+        """
+        wrapper = RDBConnectionWrapper(self.db_config)
+        with self.assertRaises(psycopg2.OperationalError):
+            with wrapper:
+                raise psycopg2.OperationalError
+
+        self.assertIsNone(wrapper.conn)
+
 
 if __name__ == '__main__':
     unittest.main()

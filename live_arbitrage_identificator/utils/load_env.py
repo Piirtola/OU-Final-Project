@@ -36,7 +36,7 @@ def load_db_env() -> Dict[str, str]:
     Returns:
         Dict[str, str]: A dictionary containing the database environment variable names and their respective values.
     """
-    db_variables = ("DB_NAME", "DB_USER", "DB_PASSWORD", "DB_HOST", "DB_PORT")
+    db_variables = ("DB_NAME", "DB_USER", "DB_PASSWORD", "DB_HOST", "DB_PORT", "SCHEMA")
     return load_env_variables(db_variables)
 
 

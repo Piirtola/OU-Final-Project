@@ -16,13 +16,13 @@ The db_management module constitutes a vital part of the project, acting as a co
                 |
                 v
       +-----------------------+
-      |    RDBQueryExecutor   |
+      | BaseRDBQueryExecutor  |
       +-----------------------+
                 |
                 v
-      +-----------------------+
-      |   RDBSchemaBuilder    |
-      +-----------------------+
+      +---------------------------+
+      | RDBArbitrageSchemaBuilder |
+      +---------------------------+
                 |
                 v
       +-----------------------+
@@ -43,8 +43,8 @@ The db_management module constitutes a vital part of the project, acting as a co
 
 1. **DBConfig**
 2. **RDBConnectionWrapper**
-3. **RDBQueryExecutor**
-4. **RDBSchemaBuilder**
+3. **BaseRDBQueryExecutor**
+4. **RDBArbitrageSchemaBuilder**
 5. **RDBManager**
 6. **RDBHelper**
 7. **RDBHelperFactory**
@@ -54,7 +54,7 @@ The db_management module constitutes a vital part of the project, acting as a co
 
     # config = DBConfig((**load_db_env()))
     # db_wrapper = RDBConnectionWrapper(config)
-    # db_schema_builder = RDBSchemaBuilder()
+    # db_schema_builder = RDBArbitrageSchemaBuilder()
     # db_manager = RDBManager(db_wrapper, db_schema_builder)
     # db_helper = RDBHelper(db_manager)
     # db_helper.fetch_stuff
@@ -81,7 +81,7 @@ The db_management module constitutes a vital part of the project, acting as a co
   - Designed for seamless adaptability to various RDBMS.
     
 - Schema Flexibility: 
-  - Schema can be effortlessly extended or altered via RDBSchemaBuilder.
+  - Schema can be effortlessly extended or altered via RDBArbitrageSchemaBuilder.
 
 # Conclusion
 

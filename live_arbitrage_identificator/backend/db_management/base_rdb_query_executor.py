@@ -3,6 +3,7 @@ from typing import Tuple, Any, List
 from psycopg2 import sql
 from psycopg2.extras import RealDictCursor
 from pathlib import Path
+from live_arbitrage_identificator.backend.db_management.rdb_connection_wrapper import RDBConnectionWrapper
 
 class BaseRDBQueryExecutor(ABC):
     """
@@ -13,14 +14,14 @@ class BaseRDBQueryExecutor(ABC):
     It forms a critical part of the database management architecture, abstracting the underlying
     interactions with the database.
 
-    Subclasses must implement the following methods to cater to specific database needs:
+    Subclasses must implement the following methods:
     - set_search_path: Configures the search path for database queries.
     - execute_query: Executes individual SQL queries, with optional fetching of results.
     - execute_values_query: Performs bulk insert/update operations using a list of tuples.
     - run_a_script_file: Executes a SQL script file.
 
-    By defining this interface, the class promotes flexibility and extensibility,
-    allowing for an easier adaptation to different database systems and potential future enhancements.
+    This abstract class tries to promote flexibility and extensibility, via simple
+    logic for adaptation to different database systems and potential future enhancements.
 
     # Example Usage:
         class MyRDBQueryExecutor(BaseRDBQueryExecutor):
@@ -31,9 +32,17 @@ class BaseRDBQueryExecutor(ABC):
 
     # See Also:
         - RDBConnectionWrapper
-        - RDBSchemaBuilder
+        - RDBArbitrageSchemaBuilder
         - RDBManager
     """
+
+    @abstractmethod
+    def __init__(self, connection_wrapper: RDBConnectionWrapper, schema_builder: RDBSchemaBuilder):
+        """
+        Initializes the query executor with a connection wrapper and a schema builder.
+        """
+        self.connection_wrapper = connection_wrapper
+        self.schema_builder = schema_builder
 
     @abstractmethod
     def set_search_path(self, cursor: RealDictCursor) -> None:

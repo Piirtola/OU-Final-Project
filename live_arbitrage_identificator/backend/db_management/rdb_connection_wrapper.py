@@ -25,9 +25,11 @@ class RDBConnectionWrapper:
     Attributes:
         pool (ThreadedConnectionPool): The connection pool for managing connections to the database.
         conn (Optional[psycopg2.extensions.connection]): The current active connection, if any.
+        config (DBConfig): The configuration parameters for connecting to the database.
     """
 
     def __init__(self, config: DBConfig):
+        self.config = config
         self.pool = ThreadedConnectionPool(
             minconn=1,
             maxconn=10,
