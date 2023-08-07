@@ -32,7 +32,6 @@ class TestAutoResetPipelineFileManager(unittest.TestCase):
 
 
 class TestAutoResetPipeline(unittest.TestCase):
-
     def setUp(self) -> None:
         self.old_file = Path("/tmp/old_file.txt")
         if not self.old_file.parent.exists():
