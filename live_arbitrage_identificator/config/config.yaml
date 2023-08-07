@@ -1,0 +1,15 @@
+db_configs:
+  host: "localhost"
+  port: 5432
+  database: "sports_betting"
+
+supported_sports:
+  - "TENNIS"
+  - "TABLE_TENNIS"
+
+available_metadata_scrapers:
+  - site: "oddsportal"
+    interval: 10800 # 60*60*3 in seconds
+    sports:
+      - "tennis"
+      - "table_tennis"
