@@ -1,14 +1,23 @@
+import os.path
 from typing import Dict, Tuple
-
+from enum import Enum
 import decouple
+from typing import Optional
 
 
-def load_env_variables(variables: Tuple[str, ...]) -> Dict[str, str]:
+class EnvFileType(Enum):
+    """Simple Enum Class to help with the choose between the .env and .env.test files."""
+    ENV = ".env"
+    ENV_TEST = ".env.test"
+
+
+def load_env_variables(variables: Tuple[str, ...], env_file_type: Optional[EnvFileType] = EnvFileType.ENV) -> Dict[str, str]:
     """
     Load environment variables from the .env file.
 
     Args:
         variables (Tuple[str, ...]): A tuple containing the environment variable names to be loaded.
+        env_file_type (EnvFileType, optional): The type of .env file to be loaded. Defaults to EnvFileType.ENV.
 
     Returns:
         Dict[str, str]: A dictionary containing the environment variable names and their respective values.
@@ -16,7 +25,7 @@ def load_env_variables(variables: Tuple[str, ...]) -> Dict[str, str]:
     Raises:
         decouple.UndefinedValueError: If any of the specified environment variables are not found in the .env file.
     """
-    config = decouple.AutoConfig()
+    config = decouple.AutoConfig(search_path=os.path.realpath(env_file_type.name))
     env_vars = {}
     try:
         for var in variables:
