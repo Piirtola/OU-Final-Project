@@ -4,6 +4,7 @@ import psycopg2.extensions
 
 from live_arbitrage_identificator.backend.db_management.db_config import DBConfig
 
+
 class RDBConnectionWrapper:
     """
     Wrapper class for managing connections to a relational database (RDB) using connection pooling.

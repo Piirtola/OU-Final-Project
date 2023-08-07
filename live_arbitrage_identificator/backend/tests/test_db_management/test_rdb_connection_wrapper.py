@@ -1,8 +1,11 @@
 import unittest
 from live_arbitrage_identificator.backend.db_management.db_config import DBConfig
 from live_arbitrage_identificator.utils.load_env import load_db_env
-from live_arbitrage_identificator.backend.db_management.rdb_connection_wrapper import RDBConnectionWrapper  # Make sure to import your RDBConnectionWrapper class
+from live_arbitrage_identificator.backend.db_management.rdb_connection_wrapper import (
+    RDBConnectionWrapper,
+)  # Make sure to import your RDBConnectionWrapper class
 import psycopg2.extensions
+
 
 class TestRDBConnectionWrapper(unittest.TestCase):
     """
@@ -27,7 +30,7 @@ class TestRDBConnectionWrapper(unittest.TestCase):
         """
         wrapper = RDBConnectionWrapper(self.db_config)
         with wrapper:
-            ... # acquire and release connection
+            ...  # acquire and release connection
 
         # Check that the connection was released
         self.assertIsNone(wrapper.conn)
@@ -44,5 +47,5 @@ class TestRDBConnectionWrapper(unittest.TestCase):
         self.assertIsNone(wrapper.conn)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

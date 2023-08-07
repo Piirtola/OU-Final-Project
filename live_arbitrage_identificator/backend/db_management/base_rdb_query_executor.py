@@ -5,6 +5,7 @@ from psycopg2.extras import RealDictCursor
 from pathlib import Path
 from live_arbitrage_identificator.backend.db_management.rdb_connection_wrapper import RDBConnectionWrapper
 
+
 class BaseRDBQueryExecutor(ABC):
     """
     Abstract base class for executing queries against a relational database (RDB).
@@ -27,7 +28,9 @@ class BaseRDBQueryExecutor(ABC):
         class MyRDBQueryExecutor(BaseRDBQueryExecutor):
             ...
 
-        query_executor = MyRDBQueryExecutor()
+        connection_wrapper = RDBConnectionWrapper(...)
+        schema_builder = MyRDBSchemaBuilder(...)
+        query_executor = MyRDBQueryExecutor(connection_wrapper, schema_builder)
         results = query_executor.execute_query(query, params, fetch=True)
 
     # See Also:
@@ -37,15 +40,19 @@ class BaseRDBQueryExecutor(ABC):
     """
 
     @abstractmethod
-    def __init__(self, connection_wrapper: RDBConnectionWrapper, schema_builder: RDBSchemaBuilder):
+    def __init__(self, connection_wrapper: RDBConnectionWrapper, schema_builder: "BaseRDBSchemaBuilder"):
         """
         Initializes the query executor with a connection wrapper and a schema builder.
+
+        Params:
+            connection_wrapper (RDBConnectionWrapper): A connection wrapper to interact with the database.
+            schema_builder (BaseRDBSchemaBuilder): An instance responsible for managing the schema of the database.
         """
         self.connection_wrapper = connection_wrapper
         self.schema_builder = schema_builder
 
     @abstractmethod
-    def set_search_path(self, cursor: RealDictCursor) -> None:
+    def set_search_path(self, cursor: RealDictCursor, search_path: str) -> None:
         """
         Sets the search path for the given cursor.
 
