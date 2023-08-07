@@ -48,6 +48,11 @@ def load_db_env() -> Dict[str, str]:
     db_variables = ("DB_NAME", "DB_USER", "DB_PASSWORD", "DB_HOST", "DB_PORT", "SCHEMA")
     return load_env_variables(db_variables)
 
+def load_test_db_env() -> Dict[str, str]:
+    """Load test database environment variables from the .env.test file."""
+    db_variables = ("DB_NAME", "DB_USER", "DB_PASSWORD", "DB_HOST", "DB_PORT", "SCHEMA")
+    return load_env_variables(db_variables, EnvFileType.ENV_TEST)
+
 
 def load_oddsportal_env() -> Tuple[str, str]:
     """
